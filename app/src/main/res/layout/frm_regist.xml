@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.CircleImageView
+            android:id="@+id/frmRegistImgProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/frmRegistEtFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:hint="@string/lbl_first_name" />
+
+        <EditText
+            android:id="@+id/frmRegistEtLastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:hint="@string/lbl_last_name" />
+
+        <EditText
+            android:id="@+id/frmRegistEtPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:hint="@string/lbl_place" />
+
+        <TextView
+            style="@style/Platform.Widget.AppCompat.Spinner"
+            android:id="@+id/frmRegistSpnGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/lbl_genre"
+            android:textSize="20dp"/>
+
+        <TextView
+            style="@style/Platform.Widget.AppCompat.Spinner"
+            android:id="@+id/frmRegistSpnPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/lbl_position"
+            android:textSize="20dp"/>
+
+        <TextView
+            style="@style/Platform.Widget.AppCompat.Spinner"
+            android:id="@+id/frmRegistSpnBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/lbl_birth"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/frmRegistEtNickName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:hint="@string/lbl_nick" />
+
+        <Button
+            android:id="@+id/frmRegistBtnRegist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/lbl_regist"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|center_vertical"></FrameLayout>
+
+</FrameLayout>
