@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.sporlif.controllers.LoginActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,10 +47,11 @@
                     android:theme="@style/EditTextWhite">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/al_edit_username"
+                        android:id="@+id/alEditUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/al_hint_username"/>
+                        android:hint="@string/al_hint_username"
+                        android:inputType="textEmailAddress"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -58,7 +61,7 @@
                     android:theme="@style/EditTextWhite">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/al_edit_password"
+                        android:id="@+id/alEditPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/al_hint_password"
@@ -67,14 +70,40 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
-                    android:id="@+id/al_button_login"
+                    android:id="@+id/alButtonLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/al_button_login">
-
-
+                    android:text="@string/al_button_login"
+                    android:theme="@style/ButtonLight"
+                    android:backgroundTint="@color/colorLightBlue">
 
                 </Button>
+
+                <TextView
+                    android:id="@+id/alForgetPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_fields"
+                    android:text="@string/al_forget_password"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"
+                    android:gravity="top"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|center"
+                    >
+
+                    <TextView
+                        android:id="@+id/alCreateAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_fields"
+                        android:text="@string/al_create_account"
+                        android:textColor="@color/colorWhite" />
+
+                </RelativeLayout>
 
             </LinearLayout>
 
