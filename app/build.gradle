@@ -1,7 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
+<<<<<<< HEAD
     compileSdkVersion 25
+=======
+    compileSdkVersion 23
+>>>>>>> 22cd5006c3cbb22469c5bfbc8d7b42b1eb8bd3b3
     buildToolsVersion '25.0.0'
 
     defaultConfig {
@@ -21,11 +25,18 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+<<<<<<< HEAD
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile group: 'org.apache.commons', name: 'com.springsource.org.apache.commons.logging', version: '1.1.1'
+=======
+    compile group: 'org.apache.commons', name: 'com.springsource.org.apache.commons.logging', version: '1.1.1'
+    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support.constraint:constraint-layout:+'
+>>>>>>> 22cd5006c3cbb22469c5bfbc8d7b42b1eb8bd3b3
     testCompile 'junit:junit:4.12'
 }
