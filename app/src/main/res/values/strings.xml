@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Sporlif</string>
-    <string name="lbl_user">USUARIO</string>
-    <string name="lbl_pass">CONTRASEÑA</string>
-    <string name="lbl_login">INICIAR SESIÓN</string>
     <string name="lbl_regist">REGISTRARSE</string>
     <string name="lbl_first_name">NOMBRE</string>
     <string name="lbl_last_name">APELLIDO</string>
@@ -11,11 +8,11 @@
     <string name="lbl_nick">APODO</string>
     <string name="lbl_birth">FECHA DE NACIMIENTO</string>
     <string name="lbl_position">POSICIÓN</string>
-    <string name="al_hint_username">Usuario</string>
-    <string name="al_hint_password">Contraseña</string>
-    <string name="al_button_login">Iniciar Sesión</string>
-    <string name="al_create_account">Crear una nueva cuenta de Sporlif</string>
-    <string name="al_forget_password">¿Has olvidado tu contraseña?</string>
+    <string name="act_login_hint_user_email">Email</string>
+    <string name="act_login_hint_pass">Contraseña</string>
+    <string name="act_login_btn_login">Iniciar Sesión</string>
+    <string name="act_login_txt_sign_in">Crear una nueva cuenta de Sporlif</string>
+    <string name="act_login_txt_recover_pass">¿Has olvidado tu contraseña?</string>
 
     <string-array name="genre">
         <item>HOMBRE</item>
