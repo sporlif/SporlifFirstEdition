@@ -11,6 +11,9 @@
     <string name="lbl_nick">APODO</string>
     <string name="lbl_birth">FECHA DE NACIMIENTO</string>
     <string name="lbl_position">POSICIÓN</string>
+    <string name="al_hint_username">Usuario</string>
+    <string name="al_hint_password">Contraseña</string>
+    <string name="al_button_login">Iniciar Sesión</string>
 
     <string-array name="genre">
         <item>HOMBRE</item>
