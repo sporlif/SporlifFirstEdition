@@ -14,6 +14,8 @@
     <string name="al_hint_username">Usuario</string>
     <string name="al_hint_password">Contraseña</string>
     <string name="al_button_login">Iniciar Sesión</string>
+    <string name="al_create_account">Crear una nueva cuenta de Sporlif</string>
+    <string name="al_forget_password">¿Has olvidado tu contraseña?</string>
 
     <string-array name="genre">
         <item>HOMBRE</item>
