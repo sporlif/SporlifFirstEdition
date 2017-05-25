@@ -1,8 +1,6 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -17,7 +15,17 @@
         <item name="colorControlActivated">@color/colorWhite</item>
     </style>
 
+    <style name="EditTextGray" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/colorLightGray</item>
+        <item name="android:textSize">@dimen/editText_textsize</item>
+        <item name="android:textColorPrimary">@color/colorLightGray</item>
+        <item name="colorAccent">@color/colorDarkGray</item>
+        <item name="colorControlNormal">@color/colorDarkGray</item>
+        <item name="colorControlActivated">@color/colorDarkGray</item>
+    </style>
+
     <style name="ButtonLight" parent="ButtonLight">
         <item name="android:textColor">@color/colorWhite</item>
     </style>
+
 </resources>

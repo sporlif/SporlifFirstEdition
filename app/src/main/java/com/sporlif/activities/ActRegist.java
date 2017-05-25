@@ -1,13 +1,15 @@
-package com.sporlif;
+package com.sporlif.activities;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.ProgressBar;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sporlif.R;
 import com.sporlif.utils.ClientHttpRequest;
 
 import java.io.ByteArrayInputStream;
@@ -21,14 +23,41 @@ import java.net.URL;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 
-public class FrmMain extends Activity {
+public class ActRegist extends Activity{
+
+    private ImageView actRegistImgProfile;
+    private EditText actRegistEtFirstName, actRegistEtLastName, actRegistEtPlace, actRegistEtNickName;
+    private TextView actRegistSpnGenre, actRegistSpnPosition, actRegistSpnBirth;
+    private Button actRegistBtnRegist;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_frm_main);
+    protected void onCreate(Bundle saved) {
+        super.onCreate(saved);
+        setContentView(R.layout.act_regist);
 
+        launchWidgets();
+        launchEvents();
+
+        //El AsyncTask lo pongo hasta que logremos hacer bien la conexión y el envío de datos al servidor
         new ConnectExample().execute();
+
+    }
+
+    public void launchWidgets() {
+        actRegistImgProfile = (ImageView) findViewById(R.id.actRegistImgProfile);
+        actRegistEtFirstName = (EditText) findViewById(R.id.actRegistEtFirstName);
+        actRegistEtLastName = (EditText) findViewById(R.id.actRegistEtLastName);
+        actRegistEtPlace = (EditText) findViewById(R.id.actRegistEtPlace);
+        actRegistEtNickName = (EditText) findViewById(R.id.actRegistEtNickName);
+        actRegistSpnGenre = (TextView) findViewById(R.id.actRegistSpnGenre);
+        actRegistSpnPosition = (TextView) findViewById(R.id.actRegistSpnPosition);
+        actRegistSpnBirth = (TextView) findViewById(R.id.actRegistSpnBirth);
+        actRegistBtnRegist = (Button) findViewById(R.id.actRegistBtnRegist);
+    }
+
+    public void launchEvents() {
+
+
     }
 
     private class ConnectExample extends AsyncTask<Double, Double, String> {
@@ -39,10 +68,10 @@ public class FrmMain extends Activity {
 
             try {
 
-                ClientHttpRequest request = new ClientHttpRequest(new URL("http://192.168.5.197:8080/serverPhp/index.php").openConnection());
+                ClientHttpRequest request = new ClientHttpRequest(new URL("http://wsporlif-project.herokuapp.com").openConnection());
                 request.setConnectTimeout(ClientHttpRequest.CONNECT_TIMEOUT);
                 request.setParameter("poolName", "pruebads");
-                request.setParameter("tz","-5");
+                request.setParameter("tz", "-5");
 
                 OutputStreamWriter w = new OutputStreamWriter(baos, "UTF-8");
 
@@ -60,7 +89,7 @@ public class FrmMain extends Activity {
                 request.setParameter("data", "", new ByteArrayInputStream(baos.toByteArray()));
                 String req = getClientMessage(request);
 
-                System.out.println("req: "+req);
+                System.out.println("req: " + req);
 
                 return "Conexión Exitosa";
 
@@ -76,7 +105,7 @@ public class FrmMain extends Activity {
         }
 
         protected void onPostExecute(String asd) {
-            Toast.makeText(FrmMain.this, asd, Toast.LENGTH_LONG);
+            Toast.makeText(ActRegist.this, asd, Toast.LENGTH_LONG);
         }
 
         protected void onPreExecute() {
@@ -88,10 +117,9 @@ public class FrmMain extends Activity {
         Reader r = new InputStreamReader(request.post(), "UTF-8");
         char[] buffer = new char[4096];
         StringBuilder sb = new StringBuilder();
-        for(int len; (len = r.read(buffer)) > 0;)
+        for (int len; (len = r.read(buffer)) > 0; )
             sb.append(buffer, 0, len);
         return sb.toString();
     }
-
 
 }

@@ -1,13 +1,15 @@
 <resources>
     <string name="app_name">Sporlif</string>
-    <string name="lbl_regist">REGISTRARSE</string>
-    <string name="lbl_first_name">NOMBRE</string>
-    <string name="lbl_last_name">APELLIDO</string>
-    <string name="lbl_genre">GÉNERO</string>
-    <string name="lbl_place">LUGAR RESIDENCIA</string>
-    <string name="lbl_nick">APODO</string>
-    <string name="lbl_birth">FECHA DE NACIMIENTO</string>
-    <string name="lbl_position">POSICIÓN</string>
+
+    <string name="act_regist_hint_first_name">Nombre</string>
+    <string name="act_regist_hint_last_name">Apellido</string>
+    <string name="act_regist_hint_genre">Género</string>
+    <string name="act_regist_hint_place">Lugar Residencia</string>
+    <string name="act_regist_hint_nick">Apodo</string>
+    <string name="act_regist_hint_birth">Fecha de Nacimiento</string>
+    <string name="act_regist_hint_position">Posición</string>
+    <string name="act_regist_btn_regist">Registrarse</string>
+
     <string name="act_login_hint_user_email">Email</string>
     <string name="act_login_hint_pass">Contraseña</string>
     <string name="act_login_btn_login">Iniciar Sesión</string>
@@ -15,16 +17,16 @@
     <string name="act_login_txt_recover_pass">¿Has olvidado tu contraseña?</string>
 
     <string-array name="genre">
-        <item>HOMBRE</item>
-        <item>MUJER</item>
+        <item>Hombre</item>
+        <item>Mujer</item>
     </string-array>
 
     <string-array name="position">
-        <item>PORTERO</item>
-        <item>DEFENSA</item>
-        <item>MEDIO</item>
-        <item>DELANTERO</item>
-        <item>TÉCNICO</item>
+        <item>Portero</item>
+        <item>Defensa</item>
+        <item>Medio</item>
+        <item>Delantero</item>
+        <item>Técnico</item>
     </string-array>
 
 </resources>
