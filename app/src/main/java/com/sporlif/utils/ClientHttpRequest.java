@@ -40,10 +40,7 @@ public class ClientHttpRequest {
     private OutputStream aOutputStream = null;
     private Map<String, String> mapOfCookie = new HashMap<String, String>();
 
-    private String sBoundary = "---------------------------"
-            + ClientHttpRequest.randomString()
-            + ClientHttpRequest.randomString()
-            + ClientHttpRequest.randomString();
+    private String sBoundary = "*****";
 
     /**
      * Connects to the output stream of the URLConnection.
@@ -135,8 +132,10 @@ public class ClientHttpRequest {
         this.aURLConnection = (HttpURLConnection) aURLConnection;
         this.aURLConnection.setRequestMethod("POST");
         this.aURLConnection.setDoOutput(true);
+        this.aURLConnection.setRequestProperty("Connection", "Keep-Alive");
+        this.aURLConnection.setRequestProperty("Cache-Control", "no-cache");
         this.aURLConnection.setRequestProperty("Content-Type",
-                "multipart/form-data; boundary=" + this.sBoundary);
+                "multipart/form-data;boundary=" + this.sBoundary);
     }
 
     /**

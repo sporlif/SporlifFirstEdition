@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Sporlif</string>
 
+    <!-- Registro -->
+    <string name="act_regist_sep_login_data">Datos de Registro</string>
+    <string name="act_regist_hint_confirm_pass">Confirmar Contraseña</string>
+    <string name="act_regist_sep_user_data">Datos Personales</string>
     <string name="act_regist_hint_first_name">Nombre</string>
     <string name="act_regist_hint_last_name">Apellido</string>
     <string name="act_regist_hint_genre">Género</string>
@@ -10,6 +14,7 @@
     <string name="act_regist_hint_position">Posición</string>
     <string name="act_regist_btn_regist">Registrarse</string>
 
+    <!-- Inicio de Sesión -->
     <string name="act_login_hint_user_email">Email</string>
     <string name="act_login_hint_pass">Contraseña</string>
     <string name="act_login_btn_login">Iniciar Sesión</string>
