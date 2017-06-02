@@ -3,40 +3,67 @@ package com.sporlif.dialogs;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.view.View;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
+import com.sporlif.activities.ActRegist;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class DialogTimePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+public class DialogTimePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
 
-    private Date pickedDate;
+    public static final String TAG_DATE_PICKER = "TAG_DATE_PICKER";
+    public static final String TAG_TIME_PICKER = "TAG_TIME_PICKER";
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public Dialog onCreateDialog(Bundle saved) {
 
         final Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        String dialogType = this.getTag();
 
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        switch (dialogType){
+
+            case TAG_DATE_PICKER:
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                return new DatePickerDialog(getActivity(), this, year, month, day);
+
+            case TAG_TIME_PICKER:
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+                int minute = c.get(Calendar.MINUTE);
+                return new TimePickerDialog(getActivity(), this, hour, minute,
+                        DateFormat.is24HourFormat(getActivity()));
+
+            default:
+                Log.e("Error","Tipo de picker no reconocido");
+                return null;
+
+        }
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
         GregorianCalendar gc = new GregorianCalendar();
         gc.set(Calendar.YEAR, year);
         gc.set(Calendar.MONTH, month);
-        gc.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-        pickedDate = gc.getTime();
+        gc.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        if(getActivity() instanceof ActRegist){
+            ((ActRegist) getActivity()).setBirthLabel(new SimpleDateFormat("yyyy/MM/dd").format(gc.getTime()));
+        }
+
     }
 
-    public Date getPickedDate(){
-        return pickedDate;
-    }
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
+    }
 }

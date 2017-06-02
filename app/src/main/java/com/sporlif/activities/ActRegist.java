@@ -157,21 +157,12 @@ public class ActRegist extends Activity {
 
             }
         });
-        actRegistBtnRegist.setOnClickListener(new View.OnClickListener() {
+        actRegistSpnBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                System.out.println("Dimos click al spn date");
-
                 DialogFragment datePicker = new DialogTimePicker();
-                datePicker.show(getFragmentManager(), "timePicker");
+                datePicker.show(ActRegist.this.getFragmentManager(), DialogTimePicker.TAG_DATE_PICKER);
                 datePicker.setCancelable(true);
-
-                if (((DialogTimePicker) datePicker).getPickedDate() != null) {
-                    birth = ((DialogTimePicker) datePicker).getPickedDate();
-                    actRegistBtnRegist.setText(new SimpleDateFormat("yyyy/MM/dd").format(birth));
-                }
-
             }
         });
 
@@ -232,6 +223,10 @@ public class ActRegist extends Activity {
             }
         });
 
+    }
+
+    public void setBirthLabel(String date){
+        actRegistSpnBirth.setText(date);
     }
 
     private class sendUserData extends DialogAsyncTask {
