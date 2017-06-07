@@ -2,12 +2,13 @@ package com.sporlif.utils;
 
 import android.os.AsyncTask;
 
-public abstract class DialogAsyncTask extends AsyncTask<Object,Integer,Object>{
+public abstract class DialogAsyncTask<T> extends AsyncTask<T,Integer,T>{
 
     public DialogAsyncTask(){
     }
 
-    protected abstract Object task();
+    protected abstract T task();
+    protected abstract void result(T res);
 
     protected void execute(){
         this.execute();
@@ -19,8 +20,7 @@ public abstract class DialogAsyncTask extends AsyncTask<Object,Integer,Object>{
     }
 
     @Override
-    protected Object doInBackground(Object... params) {
-        System.out.println("Haciendo en background");
+    protected T doInBackground(T... params) {
         return task();
     }
 
@@ -30,14 +30,13 @@ public abstract class DialogAsyncTask extends AsyncTask<Object,Integer,Object>{
     }
 
     @Override
-    protected void onPostExecute(Object s) {
+    protected void onPostExecute(T s) {
         super.onPostExecute(s);
-
-        System.out.println("resultado: "+s.toString());
+        result(s);
     }
 
     @Override
-    protected void onCancelled(Object s) {
+    protected void onCancelled(T s) {
         super.onCancelled(s);
     }
 

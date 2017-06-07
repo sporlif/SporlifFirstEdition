@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import com.sporlif.activities.ActLogin;
 import com.sporlif.activities.ActRegist;
 
 import java.text.SimpleDateFormat;
@@ -24,7 +25,7 @@ public class DialogTimePicker extends DialogFragment implements DatePickerDialog
     @Override
     public Dialog onCreateDialog(Bundle saved) {
 
-        final Calendar c = Calendar.getInstance();
+        final GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
         String dialogType = this.getTag();
 
         switch (dialogType){
@@ -44,7 +45,6 @@ public class DialogTimePicker extends DialogFragment implements DatePickerDialog
             default:
                 Log.e("Error","Tipo de picker no reconocido");
                 return null;
-
         }
     }
 
@@ -66,4 +66,5 @@ public class DialogTimePicker extends DialogFragment implements DatePickerDialog
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
     }
+
 }

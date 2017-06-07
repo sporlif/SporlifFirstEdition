@@ -24,6 +24,11 @@
         <item name="colorControlActivated">@color/colorDarkGray</item>
     </style>
 
+
+    <style name="TextViewSpinner" parent="Platform.Widget.AppCompat.Spinner">
+
+    </style>
+
     <style name="ButtonLight" parent="ButtonLight">
         <item name="android:textColor">@color/colorWhite</item>
     </style>

@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
@@ -61,9 +62,6 @@ public class ActRegist extends Activity {
 
         launchWidgets();
         launchEvents();
-
-        //El AsyncTask lo pongo hasta que logremos hacer bien la conexión y el envío de datos al servidor
-        //new ConnectExample().execute();
     }
 
     public void launchWidgets() {
@@ -90,15 +88,15 @@ public class ActRegist extends Activity {
                 final String[] genres = ActRegist.this.getResources().getStringArray(R.array.genre);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ActRegist.this);
-                builder.setTitle(R.string.act_regist_hint_genre)
-                        .setItems(R.array.genre, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
+                builder.setTitle(R.string.act_regist_hint_genre);
+                builder.setItems(R.array.genre, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int index) {
 
-                                genre = which == 0 ? 'M' : 'F';
-                                actRegistSpnGenre.setText(genres[which]);
+                        genre = (index == 0 ? 'M' : 'F');
+                        actRegistSpnGenre.setText(genres[index]);
 
-                            }
-                        });
+                    }
+                });
                 builder.setCancelable(true);
                 builder.show();
 
@@ -110,53 +108,52 @@ public class ActRegist extends Activity {
             public void onClick(View v) {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ActRegist.this);
-                builder.setTitle(R.string.act_regist_hint_position)
-                        .setMultiChoiceItems(R.array.position, selectedPos,
-                                new DialogInterface.OnMultiChoiceClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                                        if (isChecked) {
-                                            mSelectedItems.add(allPositions[which]);
-                                        } else if (mSelectedItems.contains(allPositions[which])) {
-                                            System.out.println("Se borró la key " + which + " (" + allPositions[which] + ")");
-                                            mSelectedItems.remove(allPositions[which]);
-                                        }
 
-                                        selectedPos[which] = isChecked;
-                                    }
-                                })
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                builder.setTitle(R.string.act_regist_hint_position);
+                builder.setMultiChoiceItems(R.array.position, selectedPos,
+                        new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int id) {
+                            public void onClick(DialogInterface dialog, int index, boolean isChecked) {
 
-                                if (mSelectedItems.size() == 0) {
-                                    return;
+                                if (isChecked) {
+                                    mSelectedItems.add(allPositions[index]);
+                                } else if (mSelectedItems.contains(allPositions[index])) {
+                                    mSelectedItems.remove(allPositions[index]);
                                 }
 
-                                for(int i=0;i<mSelectedItems.size();i++){
-                                    System.out.println("Item "+i+": "+mSelectedItems.get(i));
-                                }
+                                selectedPos[index] = isChecked;//cuando se borra todas las pocisiones, se borran también este arreglo
 
-                                StringBuilder sb = new StringBuilder();
-                                for (int i = 0; i < mSelectedItems.size(); i++) {
-                                    sb.append(mSelectedItems.get(i) + (i == mSelectedItems.size() - 1 ? "" : ", "));
-                                }
-                                actRegistSpnPosition.setText(sb.toString());
-                            }
-                        })
-
-                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.dismiss();
                             }
                         });
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        if (mSelectedItems.size() == 0) {
+                            return;
+                        }
+
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 0; i < mSelectedItems.size(); i++) {
+                            sb.append(mSelectedItems.get(i) + (i == mSelectedItems.size() - 1 ? "" : ", "));
+                        }
+                        actRegistSpnPosition.setText(sb.toString());
+                    }
+
+                });
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
 
                 builder.setCancelable(true);
                 builder.show();
 
             }
         });
+
         actRegistSpnBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -219,17 +216,19 @@ public class ActRegist extends Activity {
                         actRegistEtFirstName.getText().toString(), actRegistEtLastName.getText().toString(),
                         actRegistEtPlace.getText().toString(), actRegistEtNickName.getText().toString()};
 
-                new sendUserData(genre, mSelectedItems.toArray(new String[mSelectedItems.size()]), birth, userData).execute();
+                new sendUserData(genre,
+                        mSelectedItems.toArray(new String[mSelectedItems.size()]),
+                        birth, userData).execute();
             }
         });
 
     }
 
-    public void setBirthLabel(String date){
+    public void setBirthLabel(String date) {
         actRegistSpnBirth.setText(date);
     }
 
-    private class sendUserData extends DialogAsyncTask {
+    private class sendUserData extends DialogAsyncTask<String> {
 
         private JsonObject res;
 
@@ -238,7 +237,7 @@ public class ActRegist extends Activity {
         private String[] positions;
         private Date birth;
 
-        public sendUserData(Character genre, String[] positions, Date birth, String... data) {
+        public sendUserData(char genre, String[] positions, Date birth, String... data) {
             super();
             this.genre = genre;
             this.positions = positions;
@@ -249,17 +248,16 @@ public class ActRegist extends Activity {
             this.lastName = data[3];
             this.place = data[4];
             this.nick = data[5];
-            ;
         }
 
         @Override
-        protected Object task() {
+        protected String task() {
 
             int tries = 0;
             do {
                 try {
 
-                    ClientHttpRequest request = new ClientHttpRequest(new URL("http://192.168.5.197:8080/server/Prueba").openConnection());
+                    ClientHttpRequest request = new ClientHttpRequest(new URL("https://wsporlif-project.herokuapp.com/index.php?op=dnktis").openConnection());
                     request.setConnectTimeout(ClientHttpRequest.CONNECT_TIMEOUT);
                     request.setParameter("poolName", "pruebads");
                     request.setParameter("tz", "-5");
@@ -274,10 +272,11 @@ public class ActRegist extends Activity {
                         js.add("nick", nick);
                     }
                     js.add("genre", genre);
+
                     if (positions != null && positions.length > 0) {
                         JsonObjectBuilder pob = Json.createObjectBuilder();
                         for (int i = 0; i < positions.length; i++) {
-                            pob.add("pos" + i, positions[i]);
+                            pob.add("pos" + (i + 1), positions[i]);
                         }
                         js.add("selectedPositions", pob);
                     }
@@ -290,6 +289,7 @@ public class ActRegist extends Activity {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    tries++;
                     if (tries == 3) {
                         //pasar el siguiente sout a dialogo
                         return "TIMEOUT";
@@ -298,6 +298,11 @@ public class ActRegist extends Activity {
             } while (tries < 3);
 
             return res.toString();
+        }
+
+        @Override
+        protected void result(String res) {
+            System.out.println("El resultado es: " + res);
         }
 
     }
