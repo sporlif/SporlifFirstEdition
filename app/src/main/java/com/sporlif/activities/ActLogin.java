@@ -16,9 +16,10 @@ import com.sporlif.R;
 
 public class ActLogin extends Activity {
 
-    private TextView actLoginTxtSignIn;
     private EditText actLoginEtUserEmail;
     private EditText actLoginEtPass;
+    private TextView actLoginTxtRecoverPass;
+    private TextView actLoginTxtSignIn;
 
     @Override
     protected void onCreate(Bundle saved) {
@@ -33,22 +34,14 @@ public class ActLogin extends Activity {
 
     public void launchWidgets() {
 
-        actLoginTxtSignIn = (TextView) findViewById(R.id.actLoginTxtSignIn);
         actLoginEtUserEmail = (EditText) findViewById(R.id.actLoginEtUserEmail);
         actLoginEtPass = (EditText) findViewById(R.id.actLoginEtPass);
+        actLoginTxtRecoverPass = (TextView) findViewById(R.id.actLoginTxtRecoverPass);
+        actLoginTxtSignIn = (TextView) findViewById(R.id.actLoginTxtSignIn);
 
     }
 
     public void launchEvents() {
-
-        actLoginTxtSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActLogin.this, ActRegist.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_in_right,R.anim.anim_out_left);
-            }
-        });
 
         actLoginTxtSignIn.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -68,9 +61,25 @@ public class ActLogin extends Activity {
             }
         });
 
+        actLoginTxtRecoverPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActLogin.this, ActRecoverPass.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_in_right,R.anim.anim_out_left);
+            }
+        });
+
+        actLoginTxtSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActLogin.this, ActRegist.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_in_right,R.anim.anim_out_left);
+            }
+        });
+
     }
-
-
 
 }
 

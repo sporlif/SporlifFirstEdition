@@ -20,7 +20,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.ActRegist"></activity>
-        <activity android:name=".activities.ActRecoverPass"></activity>
+        <activity
+            android:name=".activities.ActRecoverPass"
+            android:parentActivityName=".activities.ActLogin">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.ActLogin" />
+        </activity>
     </application>
 
 </manifest>
