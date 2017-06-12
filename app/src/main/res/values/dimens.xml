@@ -3,5 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="editText_textsize">16sp</dimen>
-    <dimen name="padding_fields">30dp</dimen>
+    <dimen name="padding_fields_sides">23dp</dimen>
+    <dimen name="padding_fields">20dp</dimen>
 </resources>
