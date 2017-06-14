@@ -3,6 +3,7 @@ package com.sporlif.activities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -168,47 +169,56 @@ public class ActRegist extends Activity {
             public void onClick(View v) {
 
                 if (actRegistEtEmail.getText().toString().trim().length() == 0) {
-                    Toast.makeText(ActRegist.this, "Debe ingresar su correo electrónico", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Debe ingresar su correo electrónico", Toast.LENGTH_SHORT).show();
+                    actRegistEtEmail.requestFocus();
                     return;
                 }
 
                 if (actRegistEtPass.getText().toString().trim().length() == 0) {
-                    Toast.makeText(ActRegist.this, "Debe ingresar una contraseña", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Debe ingresar una contraseña", Toast.LENGTH_SHORT).show();
+                    actRegistEtPass.requestFocus();
                     return;
                 }
 
                 if (actRegistEtConfirmPass.getText().toString().trim().length() == 0) {
-                    Toast.makeText(ActRegist.this, "Debe confirmar su contraseña", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Debe confirmar su contraseña", Toast.LENGTH_SHORT).show();
+                    actRegistEtConfirmPass.requestFocus();
                     return;
                 }
 
                 if (actRegistEtFirstName.getText().toString().trim().length() == 0) {
-                    Toast.makeText(ActRegist.this, "Debe ingresar su nombre", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Debe ingresar su nombre", Toast.LENGTH_SHORT).show();
+                    actRegistEtFirstName.requestFocus();
                     return;
                 }
 
                 if (actRegistEtLastName.getText().toString().trim().length() == 0) {
-                    Toast.makeText(ActRegist.this, "Debe ingresar su apellido", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Debe ingresar su apellido", Toast.LENGTH_SHORT).show();
+                    actRegistEtLastName.requestFocus();
                     return;
                 }
 
                 if (actRegistEtPlace.getText().toString().trim().length() == 0) {
-                    Toast.makeText(ActRegist.this, "Debe ingresar su lugar de residencia", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Debe ingresar su lugar de residencia", Toast.LENGTH_SHORT).show();
+                    actRegistEtPlace.requestFocus();
                     return;
                 }
 
                 if (genre == null) {
-                    Toast.makeText(ActRegist.this, "Debe escoger su género", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Debe escoger su género", Toast.LENGTH_SHORT).show();
+                    actRegistSpnGenre.requestFocus();
                     return;
                 }
 
                 if (birth == null) {
-                    Toast.makeText(ActRegist.this, "Debe escoger su fecha de nacimiento", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Debe escoger su fecha de nacimiento", Toast.LENGTH_SHORT).show();
+                    actRegistSpnBirth.requestFocus();
                     return;
                 }
 
                 if (actRegistEtPass.getText().toString() == actRegistEtConfirmPass.getText().toString()) {
-                    Toast.makeText(ActRegist.this, "Las contraseñas deben coincidir", Toast.LENGTH_SHORT);
+                    Toast.makeText(ActRegist.this, "Las contraseñas deben coincidir", Toast.LENGTH_SHORT).show();
+                    actRegistEtConfirmPass.requestFocus();
                     return;
                 }
 
@@ -216,7 +226,7 @@ public class ActRegist extends Activity {
                         actRegistEtFirstName.getText().toString(), actRegistEtLastName.getText().toString(),
                         actRegistEtPlace.getText().toString(), actRegistEtNickName.getText().toString()};
 
-                new sendUserData(genre,
+                new sendUserData(ActRegist.this, genre,
                         mSelectedItems.toArray(new String[mSelectedItems.size()]),
                         birth, userData).execute();
             }
@@ -237,8 +247,8 @@ public class ActRegist extends Activity {
         private String[] positions;
         private Date birth;
 
-        public sendUserData(char genre, String[] positions, Date birth, String... data) {
-            super();
+        public sendUserData(ActRegist ctx,char genre, String[] positions, Date birth, String... data) {
+            super(ctx);
             this.genre = genre;
             this.positions = positions;
             this.birth = birth;
@@ -305,15 +315,6 @@ public class ActRegist extends Activity {
             System.out.println("El resultado es: " + res);
         }
 
-    }
-
-    public String getClientMessage(ClientHttpRequest request) throws IOException {
-        Reader r = new InputStreamReader(request.post(), "UTF-8");
-        char[] buffer = new char[4096];
-        StringBuilder sb = new StringBuilder();
-        for (int len; (len = r.read(buffer)) > 0; )
-            sb.append(buffer, 0, len);
-        return sb.toString();
     }
 
 }

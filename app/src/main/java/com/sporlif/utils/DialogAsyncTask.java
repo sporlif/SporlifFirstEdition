@@ -1,10 +1,18 @@
 package com.sporlif.utils;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.AsyncTask;
+
+import com.sporlif.R;
 
 public abstract class DialogAsyncTask<T> extends AsyncTask<T,Integer,T>{
 
-    public DialogAsyncTask(){
+    Context context;
+    AlertDialog loadingDialog;
+
+    public DialogAsyncTask(Context context){
+        this.context = context;
     }
 
     protected abstract T task();
@@ -17,6 +25,13 @@ public abstract class DialogAsyncTask<T> extends AsyncTask<T,Integer,T>{
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.dlg_loading_dialog_title);
+        builder.setMessage(R.string.dlg_loading_dialog_msg);
+        builder.setIcon(R.drawable.ico_info);
+        builder.setCancelable(false);
+        loadingDialog = builder.create();
+        loadingDialog.show();
     }
 
     @Override
@@ -32,6 +47,7 @@ public abstract class DialogAsyncTask<T> extends AsyncTask<T,Integer,T>{
     @Override
     protected void onPostExecute(T s) {
         super.onPostExecute(s);
+        loadingDialog.dismiss();
         result(s);
     }
 

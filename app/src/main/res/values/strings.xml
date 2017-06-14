@@ -21,6 +21,12 @@
     <string name="act_login_txt_sign_in">Crear una nueva cuenta de Sporlif</string>
     <string name="act_login_txt_recover_pass">¿Has olvidado tu contraseña?</string>
 
+
+    <!-- Dialogos -->
+    <string name="dlg_loading_dialog_title">Cargando</string>
+    <string name="dlg_loading_dialog_msg">Por favor espere...</string>
+
+
     <string-array name="genre">
         <item>Hombre</item>
         <item>Mujer</item>
