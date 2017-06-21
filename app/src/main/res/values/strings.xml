@@ -21,7 +21,6 @@
     <string name="act_login_txt_sign_in">Crear una nueva cuenta de Sporlif</string>
     <string name="act_login_txt_recover_pass">¿Has olvidado tu contraseña?</string>
     <string name="act_recover_btn_send">Enviar</string>
-    <string name="act_recover_btn_sends">Enviarsasdasd</string>
 
     <string-array name="genre">
         <item>Hombre</item>
