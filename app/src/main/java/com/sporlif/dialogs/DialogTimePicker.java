@@ -57,7 +57,7 @@ public class DialogTimePicker extends DialogFragment implements DatePickerDialog
         gc.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         if(getActivity() instanceof ActRegist){
-            ((ActRegist) getActivity()).setBirthLabel(new SimpleDateFormat("yyyy/MM/dd").format(gc.getTime()));
+
         }
 
     }

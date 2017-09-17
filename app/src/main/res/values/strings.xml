@@ -5,13 +5,31 @@
     <string name="act_regist_sep_login_data">Datos de Registro</string>
     <string name="act_regist_hint_confirm_pass">Confirmar Contraseña</string>
     <string name="act_regist_sep_user_data">Datos Personales</string>
+
+    <string name="act_regist_btn_next">Siguiente</string>
+
+    <string name="act_regist_txt_personal_data">¿Quién eres?</string>
     <string name="act_regist_hint_first_name">Nombre</string>
     <string name="act_regist_hint_last_name">Apellido</string>
-    <string name="act_regist_hint_genre">Género</string>
-    <string name="act_regist_hint_place">Lugar Residencia</string>
-    <string name="act_regist_hint_nick">Apodo</string>
+
+    <string name="act_regist_txt_birth_date">¿Cuándo fue tu nacimiento?</string>
     <string name="act_regist_hint_birth">Fecha de Nacimiento</string>
-    <string name="act_regist_hint_position">Posición</string>
+
+    <string name="act_regist_txt_genre">¿Cuál es tu género?</string>
+    <string name="act_regist_hint_genre">Género</string>
+
+    <string name="act_regist_txt_living_place">¿De Dónde Eres?</string>
+    <string name="act_regist_lbl_living_place">Selecciona un lugar</string>
+
+    <string name="act_regist_txt_additional">Datos Adicionales</string>
+    <string name="act_regist_txt_nick">¿Cuál es tu apodo?</string>
+    <string name="act_regist_hint_nick">Apodo</string>
+    <string name="act_regist_txt_position">¿Cuál es tu posición?</string>
+    <string name="act_regist_lbl_position">Selecciona una posición</string>
+
+    <string name="act_regist_txt_photo">Muéstranos quien eres</string>
+    <string name="act_regist_txt_user_data">Y por último...</string>
+
     <string name="act_regist_btn_regist">Registrarse</string>
 
     <!-- Inicio de Sesión -->
@@ -21,7 +39,6 @@
     <string name="act_login_txt_sign_in">Crear una nueva cuenta de Sporlif</string>
     <string name="act_login_txt_recover_pass">¿Has olvidado tu contraseña?</string>
     <string name="act_recover_btn_send">Enviar</string>
-
 
     <!-- Dialogos -->
     <string name="dlg_loading_dialog_title">Cargando</string>
@@ -40,5 +57,8 @@
         <item>Delantero</item>
         <item>Técnico</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

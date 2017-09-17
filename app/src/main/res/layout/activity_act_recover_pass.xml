@@ -7,7 +7,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true">
 
-    <include layout="@layout/actionbar_toolbar"/>
+    <!-- <include layout="@layout/actionbar_toolbar"/> -->
 
         <ScrollView
             android:layout_width="match_parent"
