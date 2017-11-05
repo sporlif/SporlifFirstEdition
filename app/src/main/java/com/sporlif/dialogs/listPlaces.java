@@ -12,7 +12,7 @@ import com.sporlif.R;
 
 import java.util.ArrayList;
 
-public class listGenres extends BaseAdapter {
+public class listPlaces extends BaseAdapter {
     private ArrayList<Genre> arrayListItem;
     private Context context;
 
@@ -40,7 +40,7 @@ public class listGenres extends BaseAdapter {
         TextView lstGenreTxtGenre = (TextView) item.findViewById(R.id.lstGenreTxtGenre);
 
         lstGenreImgIcon.setImageResource(arrayListItem.get(position).getIcon());
-        lstGenreTxtGenre.setText(arrayListItem.get(position).getGenre());
+        lstGenreTxtGenre.setText(arrayListItem.get(position).getPlace());
 
         return item;
     }
@@ -48,7 +48,7 @@ public class listGenres extends BaseAdapter {
     public class Genre{
 
         private int icon;
-        private String genre;
+        private String place;
 
         public Genre(){
         }
@@ -61,12 +61,12 @@ public class listGenres extends BaseAdapter {
             this.icon = icon;
         }
 
-        public String getGenre() {
-            return genre;
+        public String getPlace() {
+            return place;
         }
 
-        public void setGenre(String genre) {
-            this.genre = genre;
+        public void setPlace(String genre) {
+            this.place = genre;
         }
     }
 

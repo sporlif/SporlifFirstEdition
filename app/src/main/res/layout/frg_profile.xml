@@ -17,7 +17,7 @@
         android:theme="@style/EditTextGray">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/frgPersonalDataEtFirstName"
+            android:id="@+id/frgProfileNickName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/act_regist_hint_nick"
@@ -34,7 +34,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/actRegistSpnPlace"
+        android:id="@+id/frgProfileLstPosition"
         style="@style/Platform.Widget.AppCompat.Spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/actRegistImgProfile"
+        android:id="@+id/frgProfileImgProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="10dp"

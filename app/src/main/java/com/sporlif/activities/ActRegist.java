@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.sporlif.R;
+import com.sporlif.activities.regist_frg.FrgLivingPlace;
+import com.sporlif.activities.regist_frg.FrgProfile;
 import com.sporlif.activities.regist_frg.FrgRegistName;
+import com.sporlif.activities.regist_frg.FrgUserData;
 import com.sporlif.utils.ClientHttpRequest;
 import com.sporlif.utils.DialogAsyncTask;
 
@@ -30,13 +33,14 @@ public class ActRegist extends Activity {
     public JsonArray positions;
 
     protected int frgCount = 1;
+    protected int currentFrg = -1;
 
     public FrgRegistName frgRegistName;
+    public FrgLivingPlace frgLivingPlace;
+    public FrgProfile frgProfile;
+    public FrgUserData frgUserData;
 
-    public static final String TAG_FRG_REGIST_NAME = "TAG_FRG_REGIST_NAME";
-    public static final String TAG_FRG_LIVING_PLACE = "TAG_FRG_LIVING_PLACE";
-    public static final String TAG_FRG_PROFILE = "TAG_FRG_PROFILE";
-    public static final String TAG_FRG_USER_DATA = "TAG_FRG_USER_DATA";
+    public static final String[] FRG_TAGS = {"TAG_FRG_REGIST_NAME", "TAG_FRG_LIVING_PLACE", "TAG_FRG_PROFILE", "TAG_FRG_USER_DATA"};
 
     @Override
     protected void onCreate(Bundle saved) {
@@ -51,6 +55,42 @@ public class ActRegist extends Activity {
         actRegistBtnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                switch (currentFrg) {
+
+                    case 0:
+
+                        if (frgRegistName.getFirstName().trim().length() == 0) {
+                            Toast.makeText(ActRegist.this, "Debes escribir tu nombre", Toast.LENGTH_LONG);
+                            return;
+                        }
+
+                        if (frgRegistName.getLastName().trim().length() == 0) {
+                            Toast.makeText(ActRegist.this, "Debes escribir tu apellido", Toast.LENGTH_LONG);
+                            return;
+                        }
+
+                        if (frgRegistName.getGenreId() == -1) {
+                            Toast.makeText(ActRegist.this, "Debes seleccionar tú género", Toast.LENGTH_LONG);
+                            return;
+                        }
+
+                        break;
+
+                    case 1:
+
+                        if(frgLivingPlace.getSelectedPosId() == 0){
+                            Toast.makeText(ActRegist.this, "Debes seleccionar tú lugar de residencia.", Toast.LENGTH_LONG);
+                            return;
+                        }
+
+                        break;
+
+                    default:
+                        Toast.makeText(ActRegist.this, "currentFrg no reconocido", Toast.LENGTH_LONG);
+                        break;
+
+                }
 
                 frgCount++;
                 setFragment(frgCount);
@@ -121,28 +161,58 @@ public class ActRegist extends Activity {
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
+        if (currentFrg != -1) {
+            transaction.hide(manager.findFragmentByTag(FRG_TAGS[currentFrg]));
+        }
         switch (index) {
 
             case 1:
 
                 if (frgRegistName == null) {
                     frgRegistName = new FrgRegistName();
+                    transaction.add(R.id.frgRegistData, frgRegistName, FRG_TAGS[index - 1]);
+                } else {
+                    transaction.show(frgRegistName);
                 }
-
-                transaction.add(R.id.frgRegistData, frgRegistName, TAG_FRG_REGIST_NAME);
-                transaction.commit();
 
                 break;
 
             case 2:
 
+                if (frgLivingPlace == null) {
+                    frgLivingPlace = new FrgLivingPlace();
+                    transaction.add(R.id.frgRegistData, frgLivingPlace, FRG_TAGS[index - 1]);
+                } else {
+                    transaction.show(frgLivingPlace);
+                }
+
                 break;
 
             case 3:
 
+                if (frgProfile == null) {
+                    frgProfile = new FrgProfile();
+                    transaction.add(R.id.frgRegistData, frgProfile, FRG_TAGS[index - 1]);
+                } else {
+                    transaction.show(frgProfile);
+                }
+
                 break;
 
             case 4:
+
+                if (frgUserData == null) {
+                    frgUserData = new FrgUserData();
+                    transaction.add(R.id.frgRegistData, frgUserData, FRG_TAGS[index - 1]);
+                } else {
+                    transaction.show(frgUserData);
+                }
+
+                break;
+
+            case 5:
+
+                //validar y registrar datos
 
                 break;
 
@@ -151,6 +221,9 @@ public class ActRegist extends Activity {
                 break;
 
         }
+
+        currentFrg = index - 1;
+        transaction.commit();
 
     }
 
