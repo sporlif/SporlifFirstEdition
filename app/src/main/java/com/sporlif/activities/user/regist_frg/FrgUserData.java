@@ -1,4 +1,4 @@
-package com.sporlif.activities.regist_frg;
+package com.sporlif.activities.user.regist_frg;
 
 import android.app.Fragment;
 import android.os.Bundle;

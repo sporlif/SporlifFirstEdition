@@ -1,4 +1,4 @@
-package com.sporlif.activities.regist_frg;
+package com.sporlif.activities.user.regist_frg;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,9 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.sporlif.R;
-import com.sporlif.activities.ActRegist;
-
-import java.util.Date;
+import com.sporlif.activities.user.ActRegist;
 
 import javax.json.JsonArray;
 

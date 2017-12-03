@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Sporlif</string>
 
+    <!-- Buttons -->
+    <string name="continue_button">CONTINUAR</string>
+
     <!-- Registro -->
     <string name="act_regist_sep_login_data">Datos de Registro</string>
     <string name="act_regist_hint_confirm_pass">Confirmar Contraseña</string>
@@ -33,12 +36,28 @@
     <string name="act_regist_btn_regist">Registrarse</string>
 
     <!-- Inicio de Sesión -->
-    <string name="act_login_hint_user_email">Email</string>
+    <string name="act_login_hint_user_email">Correo electrónico</string>
     <string name="act_login_hint_pass">Contraseña</string>
     <string name="act_login_btn_login">Iniciar Sesión</string>
     <string name="act_login_txt_sign_in">Crear una nueva cuenta de Sporlif</string>
     <string name="act_login_txt_recover_pass">¿Has olvidado tu contraseña?</string>
     <string name="act_recover_btn_send">Enviar</string>
+
+    <!-- Recover password frg_enter_mail -->
+    <string name="frg_enter_mail_tag">Recupera tu cuenta</string>
+    <string name="frg_enter_mail_text_guide">Ingresa el correo electrónico para buscar tu cuenta.</string>
+
+    <!-- Recover password frg_enter_code -->
+    <string name="frg_enter_code_email">Ingresa el código que enviamos a </string>
+    <string name="frg_enter_code_text_guide">Te enviamos un correo electrónico con un código de seis dígitos. Ingresa ese código para restablecer tu contraseña.</string>
+    <string name="frg_enter_code_hint_code">Ingresar el código</string>
+    <string name="frg_enter_code_ask_receive">¿No recibiste el correo electrónico?</string>
+    <string name="frg_enter_code_resend">Enviar nuevamente el correo electrónico</string>
+
+    <!-- Recover password frg_enter_new_password -->
+    <string name="frg_enter_new_password_email">Crea una contraseña nueva.</string>
+    <string name="frg_enter_new_password_text_guide">Usarás esta contraseña para acceder a tu cuenta.\n Ingresa una combinación de al menos seis números, letras y signos de puntuación.</string>
+    <string name="frg_enter_new_password_hint_code">Escribe la nueva contraseña</string>
 
     <!-- Dialogos -->
     <string name="dlg_loading_dialog_title">Cargando</string>

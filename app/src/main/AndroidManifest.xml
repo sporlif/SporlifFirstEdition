@@ -12,20 +12,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ActLogin">
+        <activity android:name=".activities.user.ActLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ActRegist"></activity>
+        <activity android:name=".activities.user.ActRegist"></activity>
         <activity
-            android:name=".activities.ActRecoverPass"
-            android:parentActivityName=".activities.ActLogin">
+            android:name=".activities.user.ActRecoverPass"
+            android:parentActivityName=".activities.user.ActLogin">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.ActLogin" />
+                android:value=".activities.user.ActLogin" />
         </activity>
     </application>
 

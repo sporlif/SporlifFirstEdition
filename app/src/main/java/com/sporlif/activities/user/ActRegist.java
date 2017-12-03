@@ -1,4 +1,4 @@
-package com.sporlif.activities;
+package com.sporlif.activities.user;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -10,10 +10,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.sporlif.R;
-import com.sporlif.activities.regist_frg.FrgLivingPlace;
-import com.sporlif.activities.regist_frg.FrgProfile;
-import com.sporlif.activities.regist_frg.FrgRegistName;
-import com.sporlif.activities.regist_frg.FrgUserData;
+import com.sporlif.activities.user.regist_frg.FrgLivingPlace;
+import com.sporlif.activities.user.regist_frg.FrgProfile;
+import com.sporlif.activities.user.regist_frg.FrgRegistName;
+import com.sporlif.activities.user.regist_frg.FrgUserData;
 import com.sporlif.utils.ClientHttpRequest;
 import com.sporlif.utils.DialogAsyncTask;
 

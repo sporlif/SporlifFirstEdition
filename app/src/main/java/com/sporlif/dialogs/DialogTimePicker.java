@@ -10,10 +10,8 @@ import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
-import com.sporlif.activities.ActLogin;
-import com.sporlif.activities.ActRegist;
+import com.sporlif.activities.user.ActRegist;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 

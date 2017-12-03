@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sporlif.activities.user.recover_frg.FrgEnterCode">
+
+    <include layout="@layout/actionbar_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_fields_sides">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/frg_enter_mail_text_guide"
+                android:textStyle="bold"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/EditTextGray">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/frgEnterMailEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/act_login_hint_user_email"
+                    android:gravity="center"
+                    android:inputType="textEmailAddress"/>
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/frgEnterMailButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/act_recover_btn_send"
+                android:theme="@style/ButtonLight"
+                android:backgroundTint="@color/colorLightBlue">
+
+            </Button>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.sporlif.activities.regist_frg;
+package com.sporlif.activities.user.regist_frg;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -13,12 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sporlif.R;
-import com.sporlif.activities.ActRegist;
+import com.sporlif.activities.user.ActRegist;
 
 import java.util.ArrayList;
 
 import javax.json.JsonArray;
-import javax.json.JsonObject;
 
 public class FrgProfile extends Fragment {
 

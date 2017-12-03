@@ -1,4 +1,4 @@
-package com.sporlif.activities;
+package com.sporlif.activities.user;
 
 import android.app.Activity;
 import android.content.Intent;
