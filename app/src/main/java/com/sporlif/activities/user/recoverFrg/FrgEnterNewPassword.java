@@ -1,4 +1,4 @@
-package com.sporlif.activities.user.recover_frg;
+package com.sporlif.activities.user.recoverFrg;
 
 
 import android.os.Bundle;

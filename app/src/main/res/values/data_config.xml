@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="url_ws_connection">https://wsporlif-project.herokuapp.com/?</string>
+
+    <string name="url_ws_module">mod=</string>
+    <string name="url_ws_op">op=</string>
+    <string name="url_ws_filter">filter=</string>
+
+    <!-- Modules -->
+    <string name="module_user">user</string>
+
+    <!-- Optiones of Modules -->
+    <string name="option_changedP">changedP</string>
+    
+    <!-- Time Limit for Request -->
+    <string name="limit_tries_for_request">3</string>
+
+    <!-- Messages for Reuquest -->
+    <string name="time_out">TIMEOUT</string>
+    <string name="successful_request">OK</string>
+
+    <!-- Request for User-Changed Pass -->
+    <string name="no_found_user">NOFOUNDUSER</string>
+    <string name="unsuccessful_send">NOSEND</string>
+    <string name="successful_send">OKSEND</string>
+
+</resources>
+
+

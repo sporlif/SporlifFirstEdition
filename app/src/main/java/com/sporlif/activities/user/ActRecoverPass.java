@@ -1,16 +1,15 @@
 package com.sporlif.activities.user;
 
+import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
 import com.sporlif.R;
-import com.sporlif.activities.user.recover_frg.FrgEnterMail;
+import com.sporlif.activities.user.recoverFrg.FrgEnterMail;
 
 public class ActRecoverPass extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private FrgEnterMail frgEnterMail;
     private FragmentTransaction transaction;
 
@@ -20,8 +19,13 @@ public class ActRecoverPass extends AppCompatActivity {
         setContentView(R.layout.act_recover_pass);
 
         launchWidgets();
-        launchEvents();
 
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        setContentView(R.layout.act_recover_pass);
     }
 
     public void launchWidgets(){
@@ -31,12 +35,6 @@ public class ActRecoverPass extends AppCompatActivity {
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frlRecoverPassContainer, frgEnterMail);
         transaction.commit();
-
-    }
-
-    public void launchEvents(){
-
-
 
     }
 

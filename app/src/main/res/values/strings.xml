@@ -46,6 +46,9 @@
     <!-- Recover password frg_enter_mail -->
     <string name="frg_enter_mail_tag">Recupera tu cuenta</string>
     <string name="frg_enter_mail_text_guide">Ingresa el correo electrónico para buscar tu cuenta.</string>
+    <string name="frg_enter_mail_no_exist_user">El usuario no existe</string>
+    <string name="frg_enter_mail_unsuccessful_send">El correo no puedo ser enviado intentelo de nuevo</string>
+    <string name="frg_enter_mail_successful_send">El correo se ha enviado con exito</string>
 
     <!-- Recover password frg_enter_code -->
     <string name="frg_enter_code_email">Ingresa el código que enviamos a </string>
@@ -77,7 +80,7 @@
         <item>Técnico</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- General Messages -->
+    <string name="has_not_been_able_to_connect_to_server">No se ha podido conectar al sevidor intentelo de nuevo mas tarde.</string>
 
 </resources>
