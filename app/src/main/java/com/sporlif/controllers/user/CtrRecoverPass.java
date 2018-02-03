@@ -1,4 +1,4 @@
-package com.sporlif.models.user;
+package com.sporlif.controllers.user;
 
 import android.content.Context;
 
