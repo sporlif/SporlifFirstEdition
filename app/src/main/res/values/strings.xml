@@ -3,6 +3,7 @@
 
     <!-- Buttons -->
     <string name="continue_button">CONTINUAR</string>
+    <string name="search_again_button">BUSCAR DE NUEVO</string>
 
     <!-- Registro -->
     <string name="act_regist_sep_login_data">Datos de Registro</string>
@@ -49,6 +50,8 @@
     <string name="frg_enter_mail_no_exist_user">El usuario no existe</string>
     <string name="frg_enter_mail_unsuccessful_send">El correo no puedo ser enviado intentelo de nuevo</string>
     <string name="frg_enter_mail_successful_send">El correo se ha enviado con exito</string>
+    <string name="frg_enter_mail_dialog_title_no_exist_acc">No hay ninguna cuenta que coincida con esa información.</string>
+    <string name="frg_enter_mail_dialog_message_no_exist_acc">Asegúrate de que especificaste la dirección de correo electrónico correcta.</string>
 
     <!-- Recover password frg_enter_code -->
     <string name="frg_enter_code_email">Ingresa el código que enviamos a </string>
@@ -82,5 +85,8 @@
 
     <!-- General Messages -->
     <string name="has_not_been_able_to_connect_to_server">No se ha podido conectar al sevidor intentelo de nuevo mas tarde.</string>
+
+    <!-- Validations Messages -->
+    <string name="cannot_is_empty">El campo no puede estar vacío.</string>
 
 </resources>

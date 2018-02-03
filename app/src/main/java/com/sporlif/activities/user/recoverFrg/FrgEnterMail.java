@@ -2,19 +2,20 @@ package com.sporlif.activities.user.recoverFrg;
 
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.sporlif.R;
 import com.sporlif.models.user.CtrRecoverPass;
@@ -25,7 +26,6 @@ import com.sporlif.utils.UtilsForViews;
  */
 public class FrgEnterMail extends Fragment{
 
-    private Toolbar toolbar;
     private UtilsForViews utilsForViews;
     private View view;
 
@@ -34,6 +34,7 @@ public class FrgEnterMail extends Fragment{
     private Handler handler;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
+    private InputMethodManager mgr;
 
     private String email;
     private String message;
@@ -44,7 +45,6 @@ public class FrgEnterMail extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         view = inflater.inflate(R.layout.frg_enter_mail, container, false);
 
@@ -73,13 +73,6 @@ public class FrgEnterMail extends Fragment{
 
     private void launchWidgets(){
 
-        /*
-        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.frg_enter_mail_tag);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        */
-
         utilsForViews = new UtilsForViews();
         utilsForViews.createToolbar(view, (AppCompatActivity)getActivity(), getString(R.string.frg_enter_mail_tag), true);
 
@@ -87,6 +80,7 @@ public class FrgEnterMail extends Fragment{
         frgEnterMailButton = (Button) view.findViewById(R.id.frgEnterMailButton);
 
         handler = new Handler();
+        mgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
     }
 
@@ -95,6 +89,13 @@ public class FrgEnterMail extends Fragment{
         frgEnterMailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mgr.hideSoftInputFromWindow(frgEnterMailEmail.getWindowToken(), 0);
+
+                if(frgEnterMailEmail.getText().length() == 0){
+                    Toast.makeText(getActivity(), R.string.cannot_is_empty, Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 frgEnterMailButton.setEnabled(false);
 
@@ -113,16 +114,18 @@ public class FrgEnterMail extends Fragment{
                             @Override
                             public void run() {
 
-                                if(getMessage().equals(getContext().getString(R.string.successful_send))) {
+                                if(getMessage().equals(getString(R.string.successful_send))) {
                                     frgEnterCode = new FrgEnterCode();
+                                    frgEnterCode.setEmail(getEmail());
                                     fragmentManager = getFragmentManager();
                                     transaction = fragmentManager.beginTransaction();
                                     transaction.replace(R.id.frlRecoverPassContainer, frgEnterCode);
                                     transaction.commit();
                                 }else{
-                                    Log.d("mensaje: ",getMessage());
-                                    final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                    builder.setTitle(R.string.act_regist_lbl_position);
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                    builder.setTitle(R.string.frg_enter_mail_dialog_title_no_exist_acc);
+                                    builder.setMessage(R.string.frg_enter_mail_dialog_message_no_exist_acc);
+                                    builder.setPositiveButton(R.string.search_again_button, null);
                                     builder.show();
                                 }
 
